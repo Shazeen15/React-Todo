@@ -1,16 +1,17 @@
 import React from "react";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
+import "./components/Todo.css";
 
 const listItems = [
   {
     task: "Learn setState",
-    id: 1528817077286,
+    id: Math.round(Math.random() * 900000),
     completed: false,
   },
   {
     task: "Learn React Class",
-    id: 1528817084358,
+    id: Math.round(Math.random() * 900000),
     completed: false,
   },
 ];
@@ -27,11 +28,28 @@ class App extends React.Component {
     };
   }
 
+  handleLineThrough = (itemId) => {
+    this.setState({
+      listItems: this.state.listItems.map((item) => {
+        if (item.id === itemId) {
+          return {
+            ...item,
+            completed: !item.completed,
+          };
+        }
+        return item;
+      }),
+    });
+  };
+
   render() {
     return (
       <div>
         <h2>Todo List: MVP</h2>
-        <TodoList />
+        <TodoList
+          listItems={this.state.listItems}
+          handleLineThrough={this.handleLineThrough}
+        />
         <TodoForm />
       </div>
     );
