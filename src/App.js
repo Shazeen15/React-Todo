@@ -57,6 +57,17 @@ class App extends React.Component {
     });
   };
 
+  // clear button
+  handleClear = () => {
+    const newListItems = this.state.listItems.filter((item) => {
+      return !item.completed;
+    });
+
+    this.setState({
+      listItems: newListItems,
+    });
+  };
+
   render() {
     return (
       <div>
@@ -65,7 +76,7 @@ class App extends React.Component {
           listItems={this.state.listItems}
           handleLineThrough={this.handleLineThrough}
         />
-        <TodoForm handleAdd={this.handleAdd} />
+        <TodoForm handleAdd={this.handleAdd} handleClear={this.handleClear} />
       </div>
     );
   }

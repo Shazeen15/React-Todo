@@ -26,6 +26,11 @@ class TodoForm extends React.Component {
     });
   };
 
+  // clear button
+  handleClearBtn = () => {
+    this.props.handleClear();
+  };
+
   render() {
     return (
       <div>
@@ -38,7 +43,7 @@ class TodoForm extends React.Component {
           />
           <button>add</button>
         </form>
-        <button>clear</button>
+        <button onClick={this.handleClearBtn}>clear</button>
       </div>
     );
   }
