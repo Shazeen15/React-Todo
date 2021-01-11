@@ -65,7 +65,7 @@ class App extends React.Component {
           listItems={this.state.listItems}
           handleLineThrough={this.handleLineThrough}
         />
-        <TodoForm />
+        <TodoForm handleAdd={this.handleAdd} />
       </div>
     );
   }
