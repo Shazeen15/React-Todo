@@ -42,6 +42,21 @@ class App extends React.Component {
     });
   };
 
+  // add button
+  handleAdd = (TodoItem) => {
+    const newToDo = {
+      task: TodoItem,
+      id: Math.round(Math.random() * 900000),
+      completed: false,
+    };
+
+    const newListItems = [...this.state.listItems, newToDo];
+
+    this.setState({
+      listItems: newListItems,
+    });
+  };
+
   render() {
     return (
       <div>
